@@ -82,7 +82,7 @@ document.getElementById('graphForm').addEventListener('submit', function (event)
 
   let vertices = parseInt(document.getElementById('vertices').value);
   let edgesInput = document.getElementById('edges').value;
-  let source = parseInt(document.getElementById('source').value);
+  let source = document.getElementById('source').value
 
   let g = new Graph(vertices);
 
@@ -93,11 +93,11 @@ document.getElementById('graphForm').addEventListener('submit', function (event)
         return Number(val)
       }
 
-      return val.charCodeAt() - 65
+      return val.toUpperCase().charCodeAt() - 65
     });
     g.addEdge(u, v, w);
   }
 
-  g.bellmanFord(source);
+  g.bellmanFord(source.toUpperCase().charCodeAt() - 65);
   g.visualize();
 });
